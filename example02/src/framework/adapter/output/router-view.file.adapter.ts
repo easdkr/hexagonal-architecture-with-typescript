@@ -1,6 +1,6 @@
 import { readFile } from 'fs/promises';
 import { join, resolve } from 'path';
-import { RouterViewOutputPort } from '../../../application/router/port/output/router-view.output-port.js';
+import { RouterViewOutputPort } from '../../../application/port/output/router-view.output-port.js';
 import { Router } from '../../../domain/entity/router.js';
 import { RouterId } from '../../../domain/vo/router.id.js';
 import { RouterType } from '../../../domain/vo/router.type.js';
