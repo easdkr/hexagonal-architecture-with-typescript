@@ -1,6 +1,6 @@
-import { Predicate } from '../../utils/types.js';
-import { RouterId } from './router.id.js';
-import { RouterType } from './router.type.js';
+import { RouterId } from 'src/domain/router.id';
+import { RouterType } from 'src/domain/router.type';
+import { Predicate } from 'src/utils/types';
 
 export class Router {
   public constructor(private readonly _routerType: RouterType, private readonly _routerId: RouterId) {}
@@ -18,5 +18,9 @@ export class Router {
 
   public getRouterType(): RouterType {
     return this._routerType;
+  }
+
+  public toString(): string {
+    return `Router { type: ${RouterType[this._routerType]}, id: ${this._routerId.toString()} }`;
   }
 }
