@@ -1,5 +1,5 @@
-import { RouterType } from './domain/vo/router.type.js';
-import { RouterViewCliAdapter } from './framework/adapter/input/router-view.cli.adapter.js';
+import { RouterType } from 'src/domain/vo/router.type';
+import { RouterViewCliAdapter } from 'src/framework/adapter/input/router-view.cli.adapter';
 
 const cli = new RouterViewCliAdapter();
 // const routers = await cli.obtainRelatedRouters(RouterType.EDGE);

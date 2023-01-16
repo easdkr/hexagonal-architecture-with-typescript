@@ -1,4 +1,4 @@
-import { Events } from '../entity/events.js';
+import { Events } from 'src/domain/entity/events';
 
 export abstract class EventParser {
   /**

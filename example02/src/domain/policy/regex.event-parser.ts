@@ -1,8 +1,8 @@
-import { Events } from '../entity/events.js';
-import { Activity } from '../vo/activity.js';
-import { EventId } from '../vo/event.id.js';
-import { Protocol } from '../vo/protocol.js';
-import { EventParser } from './event-parser.js';
+import { Events } from 'src/domain/entity/events';
+import { EventParser } from 'src/domain/policy/event-parser';
+import { Activity } from 'src/domain/vo/activity';
+import { EventId } from 'src/domain/vo/event.id';
+import { Protocol } from 'src/domain/vo/protocol';
 
 export class RegexEventParser extends EventParser {
   parseEvent(event: string): Events {

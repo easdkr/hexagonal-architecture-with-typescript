@@ -1,8 +1,8 @@
-import { AbstractSpecification } from '../../utils/specification/abstract.specification.js';
-import { Predicate } from '../../utils/types.js';
-import { Router } from '../entity/router.js';
-import { IP } from '../vo/ip.js';
-import { Network } from '../vo/network.js';
+import { Router } from 'src/domain/entity/router';
+import { IP } from 'src/domain/vo/ip';
+import { Network } from 'src/domain/vo/network';
+import { AbstractSpecification } from 'src/utils/specification/abstract.specification';
+import { Predicate } from 'src/utils/types';
 
 export class NetworkAvailabilitySpecification extends AbstractSpecification<Router> {
   public constructor(private _address: IP, private _name: string, private _cidr: number) {

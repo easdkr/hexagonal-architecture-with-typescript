@@ -1,5 +1,5 @@
-import { Predicate } from '../../utils/types.js';
-import { Router } from '../entity/router.js';
+import { Router } from 'src/domain/entity/router';
+import { Predicate } from 'src/utils/types';
 
 export class RouterSearch {
   public static retrieveRouter(routers: Router[], predicate: Predicate<Router>): Router[] {

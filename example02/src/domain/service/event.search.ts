@@ -1,5 +1,5 @@
-import { Events } from '../entity/events.js';
-import { ParsePolicyType } from '../vo/parse.policy.type.js';
+import { Events } from 'src/domain/entity/events';
+import { ParsePolicyType } from 'src/domain/vo/parse.policy.type';
 
 export class EventSearch {
   public retrieveEvents(unparseEvents: string[], policyType: ParsePolicyType): Events[] {

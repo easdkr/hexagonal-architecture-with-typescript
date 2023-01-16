@@ -1,8 +1,8 @@
-import { RouterViewInputPort } from '../../../application/port/input/router-view.input-port.js';
-import { RouterViewUsecase } from '../../../application/usecase/router-view.usecase.js';
-import { Router } from '../../../domain/entity/router.js';
-import { RouterType } from '../../../domain/vo/router.type.js';
-import { routerViewFileAdapter } from '../output/router-view.file.adapter.js';
+import { RouterViewInputPort } from 'src/application/port/input/router-view.input-port';
+import { RouterViewUsecase } from 'src/application/usecase/router-view.usecase';
+import { Router } from 'src/domain/entity/router';
+import { RouterType } from 'src/domain/vo/router.type';
+import { routerViewFileAdapter } from 'src/framework/adapter/output/router-view.file.adapter';
 
 export class RouterViewCliAdapter {
   private _routerViewUseCase: RouterViewUsecase;

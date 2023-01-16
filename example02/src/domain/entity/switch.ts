@@ -1,7 +1,7 @@
-import { IP } from '../vo/ip.js';
-import { Network } from '../vo/network.js';
-import { SwitchId } from '../vo/switch.id.js';
-import { SwitchType } from '../vo/switch.type.js';
+import { IP } from 'src/domain/vo/ip';
+import { Network } from 'src/domain/vo/network';
+import { SwitchId } from 'src/domain/vo/switch.id';
+import { SwitchType } from 'src/domain/vo/switch.type';
 
 export class Switch {
   public constructor(private _type: SwitchType, private _id: SwitchId, private _networks: Network[], private _address: IP) {}

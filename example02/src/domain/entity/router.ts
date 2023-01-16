@@ -1,9 +1,9 @@
-import { Predicate } from '../../utils/types.js';
-import { Switch } from './switch.js';
-import { IP } from '../vo/ip.js';
-import { Network } from '../vo/network.js';
-import { RouterId } from '../vo/router.id.js';
-import { RouterType } from '../vo/router.type.js';
+import { Switch } from 'src/domain/entity/switch';
+import { IP } from 'src/domain/vo/ip';
+import { Network } from 'src/domain/vo/network';
+import { RouterId } from 'src/domain/vo/router.id';
+import { RouterType } from 'src/domain/vo/router.type';
+import { Predicate } from 'src/utils/types';
 
 export class Router {
   private _networkSwitch: Switch;

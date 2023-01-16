@@ -1,9 +1,10 @@
-import { Router } from '../entity/router.js';
-import { CIDRSpecification } from '../specification/cidr.specification.js';
-import { NetworkAmountSpecification } from '../specification/network-amount.specification.js';
-import { NetworkAvailabilitySpecification } from '../specification/network-availability.specification.js';
-import { RouterTypeSpecification } from '../specification/router-type.specification.js';
-import { IP } from '../vo/ip.js';
+import { Router } from 'src/domain/entity/router';
+import { CIDRSpecification } from 'src/domain/specification/cidr.specification';
+import { NetworkAmountSpecification } from 'src/domain/specification/network-amount.specification';
+import { NetworkAvailabilitySpecification } from 'src/domain/specification/network-availability.specification';
+import { RouterTypeSpecification } from 'src/domain/specification/router-type.specification';
+import { IP } from 'src/domain/vo/ip';
+
 /**
  * 새로운 네트워크 객체를 생성하고 해당 객체를 라우터에 연결된 스위치에 추가
  */

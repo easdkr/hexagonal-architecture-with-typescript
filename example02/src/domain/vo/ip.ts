@@ -1,4 +1,4 @@
-import { Protocol } from './protocol.js';
+import { Protocol } from 'src/domain/vo/protocol';
 
 const IPV4_STRING_LENGTH = 15 as const;
 

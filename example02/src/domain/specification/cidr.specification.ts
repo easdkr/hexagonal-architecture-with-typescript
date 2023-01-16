@@ -1,4 +1,4 @@
-import { AbstractSpecification } from '../../utils/specification/abstract.specification.js';
+import { AbstractSpecification } from 'src/utils/specification/abstract.specification';
 
 export class CIDRSpecification extends AbstractSpecification<number> {
   public static readonly MINIMUM_ALLOWED_CIRD = 8;

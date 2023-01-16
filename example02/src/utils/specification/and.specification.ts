@@ -1,5 +1,5 @@
-import { AbstractSpecification } from './abstract.specification.js';
-import { Specification } from './specification.js';
+import { AbstractSpecification } from 'src/utils/specification/abstract.specification';
+import { Specification } from 'src/utils/specification/specification';
 
 export class AndSpecification<T> extends AbstractSpecification<T> {
   constructor(private readonly _spec1: Specification<T>, private readonly _spec2: Specification<T>) {

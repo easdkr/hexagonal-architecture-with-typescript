@@ -1,5 +1,5 @@
-import { AbstractSpecification } from '../../utils/specification/abstract.specification.js';
-import { Router } from '../entity/router.js';
+import { Router } from 'src/domain/entity/router';
+import { AbstractSpecification } from 'src/utils/specification/abstract.specification';
 
 export class NetworkAmountSpecification extends AbstractSpecification<Router> {
   public static readonly MAXIMUM_ALLOWED_NETWORKS = 0;

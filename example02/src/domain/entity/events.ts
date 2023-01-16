@@ -1,9 +1,9 @@
-import { RegexEventParser } from '../policy/regex.event-parser.js';
-import { SplitEventParser } from '../policy/split.event-parser.js';
-import { Activity } from '../vo/activity.js';
-import { EventId } from '../vo/event.id.js';
-import { ParsePolicyType } from '../vo/parse.policy.type.js';
-import { Protocol } from '../vo/protocol.js';
+import { RegexEventParser } from 'src/domain/policy/regex.event-parser';
+import { SplitEventParser } from 'src/domain/policy/split.event-parser';
+import { Activity } from 'src/domain/vo/activity';
+import { EventId } from 'src/domain/vo/event.id';
+import { ParsePolicyType } from 'src/domain/vo/parse.policy.type';
+import { Protocol } from 'src/domain/vo/protocol';
 
 export class Events {
   public constructor(private _timestamp: Date, private _id: EventId, private _protocol: Protocol, private _activity: Activity) {}

@@ -1,6 +1,6 @@
-import { AbstractSpecification } from '../../utils/specification/abstract.specification.js';
-import { Router } from '../entity/router.js';
-import { RouterType } from '../vo/router.type.js';
+import { Router } from 'src/domain/entity/router';
+import { RouterType } from 'src/domain/vo/router.type';
+import { AbstractSpecification } from 'src/utils/specification/abstract.specification';
 
 export class RouterTypeSpecification extends AbstractSpecification<Router> {
   isSatisfiedBy(router: Router): boolean {

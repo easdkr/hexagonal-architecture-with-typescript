@@ -1,9 +1,9 @@
 import { readFile } from 'fs/promises';
 import { join, resolve } from 'path';
-import { RouterViewOutputPort } from '../../../application/port/output/router-view.output-port.js';
-import { Router } from '../../../domain/entity/router.js';
-import { RouterId } from '../../../domain/vo/router.id.js';
-import { RouterType } from '../../../domain/vo/router.type.js';
+import { RouterViewOutputPort } from 'src/application/port/output/router-view.output-port';
+import { Router } from 'src/domain/entity/router';
+import { RouterId } from 'src/domain/vo/router.id';
+import { RouterType } from 'src/domain/vo/router.type';
 
 class RouterViewFileAdapter implements RouterViewOutputPort {
   async fetchRouters(): Promise<Router[]> {

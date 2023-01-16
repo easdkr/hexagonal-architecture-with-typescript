@@ -1,5 +1,5 @@
-import { AndSpecification } from './and.specification.js';
-import { Specification } from './specification.js';
+import { AndSpecification } from 'src/utils/specification/and.specification';
+import { Specification } from 'src/utils/specification/specification';
 
 export abstract class AbstractSpecification<T> implements Specification<T> {
   abstract isSatisfiedBy(t: T): boolean;

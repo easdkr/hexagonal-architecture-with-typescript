@@ -1,4 +1,4 @@
-import { UUID } from '../../utils/uuid.js';
+import { UUID } from 'src/utils/uuid';
 
 export class RouterId {
   constructor(private readonly _id: UUID) {}

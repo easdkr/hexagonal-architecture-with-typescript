@@ -1,4 +1,4 @@
-import { IP } from './ip.js';
+import { IP } from 'src/domain/vo/ip';
 
 export class Network {
   public constructor(private readonly _address: IP, private readonly _name: string, private readonly _cidr: number) {
