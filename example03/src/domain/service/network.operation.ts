@@ -3,13 +3,13 @@ import { CIDRSpecification } from 'src/domain/specification/cidr.specification';
 import { NetworkAmountSpecification } from 'src/domain/specification/network-amount.specification';
 import { NetworkAvailabilitySpecification } from 'src/domain/specification/network-availability.specification';
 import { RouterTypeSpecification } from 'src/domain/specification/router-type.specification';
-import { IP } from 'src/domain/vo/ip';
+import { Network } from 'src/domain/vo/network';
 
 /**
  * 새로운 네트워크 객체를 생성하고 해당 객체를 라우터에 연결된 스위치에 추가
  */
 export class NetworkOperation {
-  public createNewNetwork(router: Router, address: IP, name: string, cidr: number): void {
+  public static createNewNetwork(router: Router, { address, name, cidr }: Network): Router {
     const availabilitySpec = new NetworkAvailabilitySpecification(address, name, cidr);
     const cidrSpec = new CIDRSpecification();
     const routerTypeSpec = new RouterTypeSpecification();
@@ -23,5 +23,7 @@ export class NetworkOperation {
       const network = router.createNetwork(address, name, cidr);
       router.addNetworkToSwitch(network);
     }
+
+    return router;
   }
 }
