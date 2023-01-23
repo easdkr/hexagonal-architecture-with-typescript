@@ -11,6 +11,10 @@ export class RouterId {
     return new RouterId(UUID.randomUUID());
   }
 
+  public getId(): UUID {
+    return this._id;
+  }
+
   toString(): string {
     return this._id.toString();
   }

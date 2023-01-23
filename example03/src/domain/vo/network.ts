@@ -1,4 +1,5 @@
 import { IP } from 'src/domain/vo/ip';
+import { Protocol } from 'src/domain/vo/protocol';
 
 export class Network {
   public constructor(private readonly _address: IP, private readonly _name: string, private readonly _cidr: number) {
@@ -15,6 +16,16 @@ export class Network {
   }
 
   get cidr(): number {
-    return this.cidr;
+    return this._cidr;
+  }
+
+  public toString(): string {
+    return `
+                  Network {
+                    address: ${this._address.address}(${Protocol[this._address.protocol]}),
+                    name: ${this._name},
+                    cird: ${this._cidr}
+                  }
+    `;
   }
 }

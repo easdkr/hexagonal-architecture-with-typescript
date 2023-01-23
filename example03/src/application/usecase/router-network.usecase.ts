@@ -16,5 +16,5 @@ export interface RouterNetworkUseCase {
    * - And CIDR이 유효하다
    * - Then 라우터에 네트워크를 추가한다
    */
-  addNetworkToRouter(routerId: RouterId, network: Network): Promise<Router>;
+  addNetworkToRouter(routerId: RouterId, network: Network): Router;
 }

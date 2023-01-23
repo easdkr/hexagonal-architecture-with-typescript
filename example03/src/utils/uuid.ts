@@ -17,4 +17,8 @@ export class UUID {
   public toString(): string {
     return this._uuid;
   }
+
+  public equals(target: UUID): boolean {
+    return this._uuid === target._uuid;
+  }
 }
