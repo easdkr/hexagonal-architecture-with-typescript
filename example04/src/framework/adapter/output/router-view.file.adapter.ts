@@ -6,7 +6,7 @@ import { RouterId } from 'src/domain/vo/router.id';
 import { RouterType } from 'src/domain/vo/router.type';
 
 class RouterViewFileAdapter implements RouterViewOutputPort {
-  async fetchRouters(): Promise<Router[]> {
+  async fetchRelatedRouters(): Promise<Router[]> {
     return await this.readFileAsString();
   }
 

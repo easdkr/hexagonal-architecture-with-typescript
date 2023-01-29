@@ -1,7 +1,7 @@
 import { RouterViewInputPort } from 'src/application/port/input/router-view.input-port';
+import { RelatedRoutersCommand } from 'src/application/usecase/commands/related-routers.command';
 import { RouterViewUsecase } from 'src/application/usecase/router-view.usecase';
 import { Router } from 'src/domain/entity/router';
-import { RouterType } from 'src/domain/vo/router.type';
 import { routerViewFileAdapter } from 'src/framework/adapter/output/router-view.file.adapter';
 
 export class RouterViewCliAdapter {
@@ -11,8 +11,9 @@ export class RouterViewCliAdapter {
     this._setAdapters();
   }
 
-  public async obtainRelatedRouters(type: RouterType): Promise<Router[]> {
-    return await this._routerViewUseCase.getRouters(Router.filterRouterByType(type));
+  public async obtainRelatedRouters(type: string): Promise<Router[]> {
+    const relatedRoutersCommand: RelatedRoutersCommand = new RelatedRoutersCommand(type);
+    return await this._routerViewUseCase.getRelatedRouters(relatedRoutersCommand);
   }
 
   private _setAdapters(): void {
