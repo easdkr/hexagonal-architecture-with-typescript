@@ -1,6 +1,6 @@
+import { RelatedRoutersCommand } from 'src/application/usecase/commands/related-routers.command';
 import { Router } from 'src/domain/entity/router';
-import { Predicate } from 'src/utils/types';
 
 export interface RouterViewUsecase {
-  getRouters(filter: Predicate<Router>): Promise<Router[]>;
+  getRelatedRouters(relatedRoutersCommand: RelatedRoutersCommand): Promise<Router[]>;
 }

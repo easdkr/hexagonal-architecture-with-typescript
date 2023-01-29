@@ -6,7 +6,7 @@ import { RouterType } from 'src/domain/vo/router.type';
 import { Predicate } from 'src/utils/types';
 
 export class Router {
-  public constructor(private readonly _routerType: RouterType, private readonly _routerId: RouterId, private _networkSwitch?: Switch) {}
+  public constructor(private readonly _type: RouterType, private readonly _routerId: RouterId, private _networkSwitch?: Switch) {}
 
   public static filterRouterByType(routerType: RouterType): Predicate<Router> {
     return routerType === RouterType.CORE ? this.isCore : this.isEdge;
@@ -15,6 +15,10 @@ export class Router {
   public static isCore: Predicate<Router> = (r) => r.getRouterType() === RouterType.CORE;
 
   public static isEdge: Predicate<Router> = (r) => r.getRouterType() === RouterType.EDGE;
+
+  public isType(type: RouterType): boolean {
+    return this._type === type;
+  }
 
   public addNetworkToSwitch(network: Network): void {
     this._networkSwitch = this._networkSwitch.addNetwork(network);
@@ -29,7 +33,7 @@ export class Router {
   }
 
   public getRouterType(): RouterType {
-    return this._routerType;
+    return this._type;
   }
 
   public getRouterId(): RouterId {
@@ -39,7 +43,7 @@ export class Router {
   public toString(): string {
     return `
       Router { 
-        type: ${RouterType[this._routerType]}, 
+        type: ${RouterType[this._type]}, 
         id: ${this._routerId.toString()}
         networkSwitch: ${this._networkSwitch.toString()}
       }
