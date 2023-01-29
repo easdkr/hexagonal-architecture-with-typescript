@@ -18,4 +18,8 @@ export class IP {
   get address(): string {
     return this._address;
   }
+
+  public static fromAddress(address: string): IP {
+    return new IP(address);
+  }
 }
