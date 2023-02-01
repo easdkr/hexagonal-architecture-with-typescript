@@ -21,6 +21,14 @@ export class Switch {
     return this._id;
   }
 
+  public get type(): SwitchType {
+    return this._type;
+  }
+
+  public get address(): IP {
+    return this._address;
+  }
+
   public toString(): string {
     return `
             Switch {
