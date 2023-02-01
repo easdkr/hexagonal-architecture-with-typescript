@@ -17,6 +17,10 @@ export class Switch {
     return copied;
   }
 
+  public get id(): SwitchId {
+    return this._id;
+  }
+
   public toString(): string {
     return `
             Switch {
