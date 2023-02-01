@@ -11,6 +11,10 @@ export class SwitchId {
     return new SwitchId(UUID.randomUUID());
   }
 
+  public getId(): UUID {
+    return this._id;
+  }
+
   toString(): UUID {
     return this._id;
   }
