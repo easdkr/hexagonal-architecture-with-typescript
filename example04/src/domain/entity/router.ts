@@ -40,6 +40,10 @@ export class Router {
     return this._routerId;
   }
 
+  public get networkSwitch(): Switch {
+    return this._networkSwitch;
+  }
+
   public toString(): string {
     return `
       Router { 
