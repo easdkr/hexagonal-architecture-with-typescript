@@ -12,8 +12,10 @@ export abstract class RouterNetworkAdapter {
   protected _addNetworkToRouter(request: AddNetworkToRouterRequest): Router {
     const routerId = RouterId.withId(request.routerId);
     const network = new Network(IP.fromAddress(request.address), request.name, request.cidr);
+    console.log(network);
+
     return this._routerNetworkUsecase.addNetworkToRouter(routerId, network);
   }
 
-  public abstract processRequest(requestParams: unknown): Router;
+  public abstract processRequest(requestParams: unknown): Promise<Router>;
 }
