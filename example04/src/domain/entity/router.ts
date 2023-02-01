@@ -12,9 +12,9 @@ export class Router {
     return routerType === RouterType.CORE ? this.isCore : this.isEdge;
   }
 
-  public static isCore: Predicate<Router> = (r) => r.getRouterType() === RouterType.CORE;
+  public static isCore: Predicate<Router> = (r) => r.type === RouterType.CORE;
 
-  public static isEdge: Predicate<Router> = (r) => r.getRouterType() === RouterType.EDGE;
+  public static isEdge: Predicate<Router> = (r) => r.type === RouterType.EDGE;
 
   public isType(type: RouterType): boolean {
     return this._type === type;
@@ -32,11 +32,11 @@ export class Router {
     return this._networkSwitch.getNetworks();
   }
 
-  public getRouterType(): RouterType {
+  public get type(): RouterType {
     return this._type;
   }
 
-  public getRouterId(): RouterId {
+  public get routerId(): RouterId {
     return this._routerId;
   }
 
