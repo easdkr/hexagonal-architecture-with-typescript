@@ -28,7 +28,7 @@ class RouterNetworkFileAdapter implements RouterNetworkOutputPort {
     let retrievedRouter: Router;
 
     for (const router of this._routers) {
-      if (router.getRouterId().getId().equals(routerId.getId())) {
+      if (router.routerId.getUUID().equals(routerId.getUUID())) {
         retrievedRouter = router;
         break;
       }
