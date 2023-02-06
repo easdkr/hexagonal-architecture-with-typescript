@@ -9,12 +9,11 @@ export abstract class RouterNetworkAdapter {
   protected _router: Router;
   protected _routerNetworkUsecase: RouterNetworkUseCase;
 
-  protected _addNetworkToRouter(request: AddNetworkToRouterRequest): Router {
+  protected async _addNetworkToRouter(request: AddNetworkToRouterRequest): Promise<Router> {
     const routerId = RouterId.withId(request.routerId);
     const network = new Network(IP.fromAddress(request.address), request.name, request.cidr);
-    console.log(network);
 
-    return this._routerNetworkUsecase.addNetworkToRouter(routerId, network);
+    return await this._routerNetworkUsecase.addNetworkToRouter(routerId, network);
   }
 
   public abstract processRequest(requestParams: unknown): Promise<Router>;

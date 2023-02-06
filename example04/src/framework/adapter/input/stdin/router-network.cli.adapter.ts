@@ -12,8 +12,7 @@ export class RouterNetworkCLIAdapter extends RouterNetworkAdapter {
 
   public async processRequest(requestParams: unknown): Promise<Router> {
     const request = await this._stdinParams(requestParams as Interface);
-    this._router = this._addNetworkToRouter(request);
-    console.log(this._router);
+    this._router = await this._addNetworkToRouter(request);
 
     const routerJson = RouterJsonFileMapper.toJson(this._router);
     console.log(routerJson);

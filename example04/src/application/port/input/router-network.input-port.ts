@@ -8,23 +8,23 @@ import { RouterId } from 'src/domain/vo/router.id';
 export class RouterNetworkInputPort implements RouterNetworkUseCase {
   public constructor(private readonly _routerNetworkOutputPort: RouterNetworkOutputPort) {}
 
-  public addNetworkToRouter(routerId: RouterId, network: Network): Router {
+  public async addNetworkToRouter(routerId: RouterId, network: Network): Promise<Router> {
     const router = this._fetchRouter(routerId);
 
-    return this._createNetwork(router, network);
+    return await this._createNetwork(router, network);
   }
 
   private _fetchRouter(routerId: RouterId): Router {
     return this._routerNetworkOutputPort.fetchRouterById(routerId);
   }
 
-  private _createNetwork(router: Router, network: Network): Router {
+  private async _createNetwork(router: Router, network: Network): Promise<Router> {
     const newRouter = NetworkOperation.createNewNetwork(router, network);
 
-    return this._persistNetwork(router) ? newRouter : router;
+    return (await this._persistNetwork(router)) ? newRouter : router;
   }
 
-  private _persistNetwork(router: Router): boolean {
-    return this._routerNetworkOutputPort.persistRouter(router);
+  private async _persistNetwork(router: Router): Promise<boolean> {
+    return await this._routerNetworkOutputPort.persistRouter(router);
   }
 }
