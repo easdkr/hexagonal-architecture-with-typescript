@@ -16,13 +16,12 @@ export class NetworkOperation {
     const amountSpec = new NetworkAmountSpecification();
 
     if (!cidrSpec.isSatisfiedBy(network.cidr)) throw new Error(`CIDR is below ${CIDRSpecification.MINIMUM_ALLOWED_CIRD}`);
-
     if (!availabilitySpec.isSatisfiedBy(router)) throw new Error('Address already exist');
+    if (!amountSpec.isSatisfiedBy(router)) throw new Error('Network amount not satisfied');
+    if (!routerTypeSpec.isSatisfiedBy(router)) throw new Error('Router type is not satisfied');
 
-    if (amountSpec.isSatisfiedBy(router) && routerTypeSpec.isSatisfiedBy(router)) {
-      const _network = router.createNetwork(network.address, network.name, network.cidr);
-      router.addNetworkToSwitch(_network);
-    }
+    const _network = router.createNetwork(network.address, network.name, network.cidr);
+    router.addNetworkToSwitch(_network);
 
     return router;
   }
