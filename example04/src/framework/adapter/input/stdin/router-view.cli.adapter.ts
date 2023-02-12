@@ -2,7 +2,7 @@ import { RouterViewInputPort } from 'src/application/port/input/router-view.inpu
 import { RelatedRoutersCommand } from 'src/application/usecase/commands/related-routers.command';
 import { RouterViewUsecase } from 'src/application/usecase/router-view.usecase';
 import { Router } from 'src/domain/entity/router';
-import { routerViewFileAdapter } from 'src/framework/adapter/output/router-view.file.adapter';
+import { routerViewFileAdapter } from 'src/framework/adapter/output/file/router-view.file.adapter';
 
 export class RouterViewCliAdapter {
   private _routerViewUseCase: RouterViewUsecase;
