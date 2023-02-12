@@ -9,13 +9,13 @@ export class RouterNetworkInputPort implements RouterNetworkUseCase {
   public constructor(private readonly _routerNetworkOutputPort: RouterNetworkOutputPort) {}
 
   public async addNetworkToRouter(routerId: RouterId, network: Network): Promise<Router> {
-    const router = this._fetchRouter(routerId);
+    const router = await this._fetchRouter(routerId);
 
     return await this._createNetwork(router, network);
   }
 
-  private _fetchRouter(routerId: RouterId): Router {
-    return this._routerNetworkOutputPort.fetchRouterById(routerId);
+  private async _fetchRouter(routerId: RouterId): Promise<Router> {
+    return await this._routerNetworkOutputPort.fetchRouterById(routerId);
   }
 
   private async _createNetwork(router: Router, network: Network): Promise<Router> {

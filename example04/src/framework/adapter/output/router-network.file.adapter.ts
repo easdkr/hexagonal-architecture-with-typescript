@@ -19,7 +19,7 @@ class RouterNetworkFileAdapter implements RouterNetworkOutputPort {
     this._readJsonFile();
   }
 
-  public fetchRouterById(routerId: RouterId): Router {
+  public async fetchRouterById(routerId: RouterId): Promise<Router> {
     let retrievedRouter: Router;
 
     for (const router of this._routers) {
