@@ -11,27 +11,30 @@ datasource db {
 }
 
 model RouterData {
-  id String @id @map("router_id")
+  id String @id
 
-  routerType RouterTypeData
+  type RouterTypeData
 
-  networkSwitch SwitchData[]
+  networkSwitch SwitchData?
+
+
+  @@map(name: "router")
 }
 
 
 model SwitchData {
-  id String @id @map("switch_id")
+  id String @id
 
-  switchType SwitchTypeData 
+  type SwitchTypeData 
 
   router RouterData @relation(fields: [routerId], references: [id])
-  routerId String
+  routerId String @map("router_id") @unique
 
   
   networks NetworkData[]
 
 
-  ipAddress String @unique
+  ipAddress String @unique @map("ip_address")
   ip IPData @relation(fields: [ipAddress], references: [address])
 
   @@map(name: "switch")
@@ -39,12 +42,12 @@ model SwitchData {
 
 
 model NetworkData {
-  id Int @id @map("network_id")
+  id Int @id @default(autoincrement())
 
   switch SwitchData @relation(fields: [switchId], references: [id])
-  switchId String
+  switchId String @map("switch_id")
 
-  ipAddress String @unique
+  ipAddress String @unique @map("ip_address")
   ip IPData @relation(fields: [ipAddress], references: [address])
 
   name String
