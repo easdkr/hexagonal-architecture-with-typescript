@@ -48,5 +48,8 @@
   },
   "volta": {
     "node": "18.12.1"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }
