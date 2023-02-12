@@ -15,7 +15,7 @@ export class SwitchId {
     return this._id;
   }
 
-  toString(): UUID {
-    return this._id;
+  toString(): string {
+    return this._id.toString();
   }
 }
