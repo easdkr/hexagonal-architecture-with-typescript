@@ -1,4 +1,4 @@
-import { IPData, Prisma, ProtocolData, RouterTypeData, SwitchTypeData } from '@prisma/client';
+import { Prisma, ProtocolData } from '@prisma/client';
 import { Router } from 'src/domain/entity/router';
 import { Switch } from 'src/domain/entity/switch';
 import { IP } from 'src/domain/vo/ip';
@@ -23,30 +23,24 @@ export class RouterPrismaMapper {
     return new Router(routerType, routerId, networkSwitch);
   }
 
-  public static toPrisma(router: Router): Prisma.RouterDataCreateInput {
-    const routerDataType = RouterTypeData[RouterType[router.type]];
+  public static toPrisma(router: Router): Prisma.NetworkDataCreateArgs {
     const routerDataId = router.routerId.toString();
-    const switchDataId = router.networkSwitch.id;
-    const switchTypeData = SwitchTypeData[SwitchType[router.networkSwitch.type]];
-    const ipData: IPData = {
-      address: router.networkSwitch.address.address,
-      protocol: ProtocolData[Protocol[router.networkSwitch.address.protocol]],
-    };
 
-    const networkDataList = this._getNetworksFromDomain(router.networkSwitch.getNetworks());
+    const networks = router.networkSwitch.getNetworks().at(-1);
 
     return {
-      id: routerDataId,
-      type: routerDataType,
-      networkSwitch: {
-        create: {
-          id: switchDataId.toString(),
-          type: switchTypeData,
-          ip: {
-            create: ipData,
+      data: {
+        switch: {
+          connect: {
+            routerId: routerDataId,
           },
-          networks: {
-            create: networkDataList,
+        },
+        cidr: networks.cidr,
+        name: networks.name,
+        ip: {
+          create: {
+            address: networks.address.address,
+            protocol: ProtocolData[Protocol[networks.address.protocol]],
           },
         },
       },
@@ -55,18 +49,5 @@ export class RouterPrismaMapper {
 
   private static _getNetworksFromData(networkData: NetworkDataType[]): Network[] {
     return networkData.map(({ ip: { address }, name, cidr }) => new Network(IP.fromAddress(address), name, cidr));
-  }
-
-  private static _getNetworksFromDomain(networks: Network[]): Prisma.NetworkDataCreateWithoutSwitchInput[] {
-    return networks.map<Prisma.NetworkDataCreateWithoutSwitchInput>(({ cidr, address: { address, protocol }, name }) => ({
-      cidr,
-      name,
-      ip: {
-        create: {
-          address,
-          protocol: ProtocolData[Protocol[protocol]],
-        },
-      },
-    }));
   }
 }

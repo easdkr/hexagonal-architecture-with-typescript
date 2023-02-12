@@ -26,14 +26,18 @@ class RouterNetworkPrismaAdapter implements RouterNetworkOutputPort {
         },
       },
     });
+
     return RouterPrismaMapper.toDomain(routerData);
   }
 
+  /**
+   * 원본 도서 예제의 java는 Router data 전체를 persist 를 사용하는데
+   * 실제로 의도한 동작은 input adapter로 부터 전달 받은 network 데이터만 해당 router에 추가하는 동작
+   */
   async persistRouter(router: Router): Promise<boolean> {
-    const routerData = RouterPrismaMapper.toPrisma(router);
-    await this._prisma.routerData.create({
-      data: routerData,
-    });
+    const networkData = RouterPrismaMapper.toPrisma(router);
+
+    await this._prisma.networkData.create(networkData);
 
     return true;
   }

@@ -1,10 +1,12 @@
-import express from 'express';
+import bodyParser from 'body-parser';
+import express, { Handler, Router } from 'express';
 
-class WebApp {
+export class WebApp {
   private _app: express.Application;
 
-  constructor(private readonly _port: number) {
+  constructor(private readonly _port = 3000) {
     this._app = express();
+    this._init();
   }
 
   public start(): void {
@@ -12,12 +14,19 @@ class WebApp {
       console.log(`Service listening on ${this._port}`);
     });
   }
-}
 
-export class WebAppFactory {
-  static create(port = 3000): WebApp {
-    const app = new WebApp(port);
+  public applyRouter(method: 'GET' | 'POST', url: string, handler: Handler): void {
+    switch (method) {
+      case 'GET':
+        this._app.get(url, handler);
+        return;
+      case 'POST':
+        this._app.post(url, handler);
+        return;
+    }
+  }
 
-    return app;
+  private _init(): void {
+    this._app.use(bodyParser.json());
   }
 }
